@@ -1,1 +1,0 @@
-web: java $JAVA_OPTS -jar target/edziennik-0.0.1-SNAPSHOT-plain.jar -Dserver.port=$PORT $JAR_OPTS
