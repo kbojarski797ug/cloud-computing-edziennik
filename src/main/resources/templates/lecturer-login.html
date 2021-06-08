@@ -1,0 +1,38 @@
+<!DOCTYPE HTML>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Dziennik elektroniczny</title>
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Dziennik elektroniczny</h3>
+    <hr>
+
+    <p class="h4 mb-4">Zaloguj sie jako nauczyciel</p>
+
+    <form th:action="@{/lecturer/processlogin}"
+          th:object="${loginData}" method="POST">
+
+        <input type="text" th:field="*{pesel}"
+               class="form-control mb-4 col-4" placeholder="PESEL">
+
+        <input type="password" th:field="*{password}"
+               class="form-control mb-4 col-4" placeholder="Hasło">
+
+        <button type="submit" class="btn btn-info col-2">Login</button>
+
+    </form>
+
+</div>
+</body>
+
+</html>

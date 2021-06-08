@@ -1,0 +1,66 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Nauczyciel</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Dziennik Elektroniczny</h3>
+    <div  style="display:flex; flex-direction: row; width: 100%">
+        <form th:action="@{/lecturer/} + ${studentAddGrade.lecturer.id}" method="GET" align="left">
+            <input type="submit" value="Wstecz" class="btn btn-outline-primary mt-2"/>
+        </form>
+        <form th:action="@{/lecturer}" method="GET" align="right" style="position: absolute; right: 21%;">
+            <input type="submit" value="Wyloguj" class="btn btn-outline-primary mt-2"/>
+        </form>
+    </div>
+
+    <hr>
+
+    <div>
+        Klasa: <b th:text="${subject.name} + ' ' + ${subject.groupName}"/>
+    </div>
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Uczeń</th>
+            <th>Oceny</th>
+            <th>Dodaj ocene</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="studentInfo : ${studentsInfo}">
+
+            <td th:text="${studentInfo.student.firstName} + ' ' + ${studentInfo.student.lastName}" />
+            <td style="width: 400px" th:text="${studentInfo.grades}"/>
+            <td>
+                <form th:action="@{/lecturer/addGrade/} + ${studentInfo.student.id} + '/' + ${studentAddGrade.lecturer.id} + '/' + ${studentAddGrade.subject.id}" th:object="${studentAddGrade}" method="POST">
+                    <div  style="display:flex; flex-direction: row; justify-content: center; align-items: center">
+                        <input type="text" th:field="*{grade}" class="form-control col-4" placeholder="Ocena">
+                        <button type="submit" class="btn btn-info">Dodaj</button>
+                    </div>
+                </form>
+            </td>
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
+
+
+

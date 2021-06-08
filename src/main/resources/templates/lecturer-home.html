@@ -1,0 +1,34 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Nauczyciel</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Dziennik Elektroniczny</h3>
+    <form th:action="@{/lecturer}" method="GET" align="right">
+        <input type="submit" value="Wyloguj" class="btn btn-outline-primary mt-2" align="right"/>
+    </form>
+
+    <hr>
+
+    <tr th:each="subject : ${subjects}">
+        <form th:action="@{'/lecturer/' + ${lecturerId} + '/' + ${subject.id}}" method="GET" align="center">
+            <button type="submit" class="btn btn-info col-3" th:text="${subject.name} + ' ' + ${subject.groupName}"/>
+            <h1>    </h1>
+        </form>
+    </tr>
+
+</div>
+</body>
+</html>

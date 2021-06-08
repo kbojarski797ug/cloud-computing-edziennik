@@ -1,0 +1,61 @@
+<!DOCTYPE HTML>
+<html lang="en"
+      xmlns:th="http://www.thymeleaf.org" >
+
+<head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css" integrity="sha384-GJzZqFGwb1QTTN6wy59ffF1BuGJpLSa9DkKMp0DgiMDm4iYMj70gZWKYbI706tWS" crossorigin="anonymous">
+
+    <title>Uczeń</title>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <h3>Dziennik Elektroniczny</h3>
+    <form th:action="@{/}" method="GET" align="right">
+        <input type="submit" value="Wyloguj" class="btn btn-outline-primary mt-2" align="right"/>
+    </form>
+    <hr>
+
+    <div>
+        Uczeń: <b th:text="${student.firstName} +' '+  ${student.lastName}" />
+    </div>
+
+    <div>
+        Klasa: <b th:text="${student.groupName}"/>
+    </div>
+
+
+    <table class="table table-bordered table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th>Przedmiot</th>
+            <th>Oceny</th>
+            <th>Nauczyciel</th>
+        </tr>
+        </thead>
+
+        <tbody>
+        <tr th:each="studentData : ${studentDataList}">
+
+            <td th:text="${studentData.subject}" />
+            <td th:text="${studentData.grades}" />
+            <td th:text="${studentData.lecturer}" />
+
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+</body>
+</html>
+
+
+
