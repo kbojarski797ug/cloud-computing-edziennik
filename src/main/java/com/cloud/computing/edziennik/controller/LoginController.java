@@ -18,7 +18,7 @@ import java.util.Arrays;
 
 import static com.cloud.computing.edziennik.entity.Grade.*;
 
-@RestController
+@Controller
 public class LoginController {
 
     private SubjectRepository subjectRepository;
